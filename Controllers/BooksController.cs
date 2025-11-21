@@ -76,7 +76,8 @@ namespace BookstoreApi.Controllers
             await _repository.SaveChangesAsync();
 
             // No need to return anything, just a status code
-            return NoContent();
+            var dto = _mapper.Map<BookDto>(existing);
+            return Ok(dto);
         }
 
         // PATCH, update a book object,  partially

@@ -66,7 +66,8 @@ namespace BookstoreApi.Controllers
             await _repository.UpdateOrderAsync(existing);
             await _repository.SaveChangesAsync();
 
-            return NoContent();
+            var dto = _mapper.Map<OrderDto>(existing);
+            return Ok(dto);
         }
 
         // PATCH , update part of an existing order
