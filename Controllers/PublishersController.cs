@@ -66,7 +66,8 @@ namespace BookstoreApi.Controllers
             await _repository.UpdatePublisherAsync(existing);
             await _repository.SaveChangesAsync();
 
-            return NoContent();
+            var dto = _mapper.Map<PublisherDto>(existing);
+            return Ok(dto);
         }
 
         // PATCH, update an existing publisher
